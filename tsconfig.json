@@ -1,0 +1,4 @@
+{
+  "include": [],
+  "extends": ["@declaform/dev-config/tsconfig/base"]
+}
