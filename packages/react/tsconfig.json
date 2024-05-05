@@ -1,0 +1,7 @@
+{
+  "include": ["./src", "./@types"],
+  "extends": ["@declaform/dev-config/tsconfig/base.json"],
+  "compilerOptions": {
+    "strict": false
+  }
+}
