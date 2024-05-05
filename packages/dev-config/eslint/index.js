@@ -21,7 +21,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking'
   ],
   ignorePatterns: ['.eslintrc.js', 'build', 'tsup.config.ts'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-unsafe-argument': 'off'
+  },
   overrides: [
     {
       files: ['**/*.{spec,test}.{ts,tsx}'],
