@@ -2,6 +2,25 @@
   "name": "declaform",
   "version": "0.0.0",
   "private": true,
+  "author": {
+    "name": "mizuki_r",
+    "email": "ry.mizuki@gmail.com"
+  },
+  "license": "MIT",
+  "description": "The form validation library for declaration",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rymizuki/declaform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rymizuki/declaform/issues"
+  },
+  "homepage": "https://github.com/rymizuki/declaform#readme",
+  "keywords": [
+    "form",
+    "validation",
+    "react"
+  ],
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -9,21 +28,15 @@
     "format": "turbo run format",
     "test": "turbo run test"
   },
-  "author": {
-    "name": "mizuki_r",
-    "email": "ry.mizuki@gmail.com"
-  },
-  "license": "MIT",
-  "description": "",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "devDependencies": {
     "@declaform/dev-config": "*",
     "turbo": "^1.13.3"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.14.3"
-  },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ]
+  }
 }
