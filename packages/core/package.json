@@ -30,7 +30,6 @@
     "./build/index.js.map"
   ],
   "scripts": {
-    "prepare": "npm run build",
     "build": "tsup --dts --outDir build --splitting false --sourcemap --clean ./src/index.ts",
     "test": "vitest run",
     "lint": "eslint --max-warnings 0 --ext .ts,.tsx .",
