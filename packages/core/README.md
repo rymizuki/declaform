@@ -14,11 +14,13 @@ npm install @declaform/core
 
 ```ts
 declare module '@declaform/core' {
-  interface ValidatorDefineRules {
-    username: {}
-    password: {}
-    passwordConfirm: {
-      ruleReferenceInputName: string
+  interface ValidatorDefineConfig {
+    rules: {
+      username: {}
+      password: {}
+      passwordConfirm: {
+        ruleReferenceInputName: string
+      }
     }
   }
 }

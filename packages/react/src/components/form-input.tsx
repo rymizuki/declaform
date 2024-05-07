@@ -1,16 +1,15 @@
 import { ReactElement, useEffect, useMemo } from 'react'
 
-import { ValidatorDefineRules } from '@declaform/core'
 import { useFormCommand } from '../hooks/use-form-command'
 import { useFormErrors } from '../hooks/use-form-errors'
 import { useFormInputRuleRegister } from '../hooks/use-form-input-rule-register'
 import { useFormValidator } from '../hooks/use-form-validator'
 import {
   ErrorTypes,
-  ExistsRule,
   FormInputChangeEvent,
   FormInputFocusEvent,
-  InputRuleDefine
+  InputRuleDefine,
+  Rules
 } from '../types'
 
 type InputElementProp = (
@@ -23,13 +22,13 @@ type InputElementProp = (
   errors: ErrorTypes
 ) => ReactElement
 
-type Props<N extends keyof ExistsRule<ValidatorDefineRules>> = {
+type Props<N extends keyof Rules> = {
   children: InputElementProp
   name: string
   required?: boolean
 } & InputRuleDefine<N>
 
-export const FormInput = <N extends keyof ExistsRule<ValidatorDefineRules>>({
+export const FormInput = <N extends keyof Rules>({
   children: renderProp,
   name,
   required = false,

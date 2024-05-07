@@ -1,11 +1,11 @@
 import type {
   DefineValidationRuleInterface,
-  ValidatorDefineRules
+  ValidatorDefineConfig
 } from './types'
 import { validator } from './validator'
 
 export function defineValidationRule<
-  N extends keyof ValidatorDefineRules,
+  N extends keyof ValidatorDefineConfig['rules'],
   R extends DefineValidationRuleInterface<N>
 >(name: N, rule: R) {
   // XXX: By default, rule object contents is "never". rule type defined empty object({}).

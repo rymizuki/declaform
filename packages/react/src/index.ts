@@ -1,8 +1,3 @@
-export {
-  defineErrorHandler,
-  defineValidationRule,
-  type ValidatorDefineRules
-} from '@declaform/core'
 export { FormInput } from './components/form-input'
 export { Provider as FormProvider } from './components/provider'
 export { useFormCommand } from './hooks/use-form-command'

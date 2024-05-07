@@ -2,16 +2,15 @@ import { defineErrorHandler, defineValidationRule } from '@declaform/core'
 import { ZodError, z } from 'zod'
 
 declare module '@declaform/core' {
-  interface ValidatorDefineRules {
-    user_id: {}
-    user_name: {}
-    password: {}
-    password_confirm: {
-      ruleTargetPropName: string
-    }
-  }
-
   interface ValidatorDefineConfig {
+    rules: {
+      user_id: {}
+      user_name: {}
+      password: {}
+      password_confirm: {
+        ruleTargetPropName: string
+      }
+    }
     errorType: string
   }
 }

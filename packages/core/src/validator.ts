@@ -1,4 +1,4 @@
-import type { ValidatorDefineRules, ValidatorInterface } from './types'
+import type { ValidatorDefineConfig, ValidatorInterface } from './types'
 
 export const validator: ValidatorInterface = {
   rules: {},
@@ -7,13 +7,13 @@ export const validator: ValidatorInterface = {
   ) {
     return [`${error}`]
   },
-  validateField<N extends keyof ValidatorDefineRules>(
+  validateField<N extends keyof ValidatorDefineConfig['rules']>(
     ruleName: N,
     value: unknown,
     currentData: Record<string, unknown>,
     context: {
       name: Exclude<N, number>
-    } & ValidatorDefineRules[N]
+    } & ValidatorDefineConfig['rules'][N]
   ) {
     const rule = this.rules[ruleName]
     if (!rule) {

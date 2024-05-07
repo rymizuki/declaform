@@ -3,12 +3,11 @@ import { ZodError } from 'zod'
 import { passwordSchema, userIdSchema } from './schemas'
 
 declare module '@declaform/core' {
-  export interface ValidatorDefineRules {
-    user_id: {}
-    password: {}
-  }
-
   interface ValidatorDefineConfig {
+    rules: {
+      user_id: {}
+      password: {}
+    }
     errorType: string
   }
 }

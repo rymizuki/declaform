@@ -1,17 +1,16 @@
 import { ChangeEvent, FocusEvent } from 'react'
 
-import { ValidatorDefineConfig, ValidatorDefineRules } from '@declaform/core'
+import { ValidatorDefineConfig } from '@declaform/core'
 
-export type ExistsRule<T extends ValidatorDefineRules> =
+export type Rules = ValidatorDefineConfig['rules']
+
+export type ExistsRule<T extends Rules> =
   T extends Record<string, never> ? Record<string, NonNullable<unknown>> : T
 
-export type DefineRule<
-  N extends
-    keyof ExistsRule<ValidatorDefineRules> = keyof ExistsRule<ValidatorDefineRules>
-> = {
+export type DefineRule<N extends keyof Rules = keyof Rules> = {
   [P in N]: {
     rule: P
-  } & ExistsRule<ValidatorDefineRules>[P]
+  } & Rules[P]
 }[N]
 
 export type ErrorTypes = ValidatorDefineConfig['errorType'][]
@@ -32,10 +31,9 @@ export interface QueryPort {
   touchFields: Record<string, boolean>
 }
 
-export type InputRuleDefine<
-  N extends
-    keyof ExistsRule<ValidatorDefineRules> = keyof ExistsRule<ValidatorDefineRules>
-> = { rule: N } & ExistsRule<ValidatorDefineRules>[N]
+export type InputRuleDefine<N extends keyof Rules = keyof Rules> = {
+  rule: N
+} & Rules[N]
 
 export type FormInputChangeEvent<E = HTMLInputElement> = ChangeEvent<E>
 export type FormInputFocusEvent<E = HTMLInputElement> = FocusEvent<E>

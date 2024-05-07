@@ -14,11 +14,13 @@ npm install @declaform/core @declaform/react
 
 ```ts
 declare module '@declaform/core' {
-  interface ValidatorDefineRules {
-    username: {}
-    password: {}
-    passwordConfirm: {
-      ruleReferenceInputName: string
+  interface ValidatorDefineConfig {
+    rules: {
+      username: {}
+      password: {}
+      passwordConfirm: {
+        ruleReferenceInputName: string
+      }
     }
   }
 }
@@ -64,7 +66,13 @@ You can re-format validate error.
 ```ts
 import { defineErrorHandler } from '@declaform/core'
 
-defineErrorHandler((error: ZodError) => {
+declare module '@declaform/core' {
+  interface ValidatorDefineConfig {
+    errorType: string
+  }
+}
+
+defineErrorHandler<ZodError>((error) => {
   return error.issues.map((issue) => issue.message)
 })
 ```
