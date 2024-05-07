@@ -164,3 +164,8 @@ const PasswordInput = ({ name, }: Props) => {
   </FormInput>
 }
 ```
+
+## Packages
+
+- [@declaform/core](./packages/core/README.md)
+- [@declaform/react](./packages/react/README.md)
