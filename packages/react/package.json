@@ -3,6 +3,33 @@
   "version": "0.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "author": {
+    "name": "mizuki_r",
+    "email": "ry.mizuki@gmail.com"
+  },
+  "license": "MIT",
+  "description": "The form validation library for declaration",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rymizuki/declaform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rymizuki/declaform/issues"
+  },
+  "homepage": "https://github.com/rymizuki/declaform#readme",
+  "keywords": [
+    "form",
+    "validation",
+    "react"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "./build/index.d.ts",
+    "./build/index.js",
+    "./build/index.js.map"
+  ],
   "scripts": {
     "prepare": "npm run build",
     "build": "tsup --dts --outDir build --splitting false --sourcemap --clean ./src/index.ts",
