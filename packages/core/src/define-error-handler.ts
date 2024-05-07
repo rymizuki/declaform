@@ -1,8 +1,8 @@
-import type { ValidatorErrorHandlerDefineFunction } from './types'
+import type { ValidatorErrorHandler } from './types'
 import { validator } from './validator'
 
-export const defineErrorHandler: ValidatorErrorHandlerDefineFunction = (
-  handler
-) => {
+export function defineErrorHandler<T = unknown>(
+  handler: ValidatorErrorHandler<T>
+) {
   validator.errorHandler = handler
 }

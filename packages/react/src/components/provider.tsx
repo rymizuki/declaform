@@ -9,7 +9,7 @@ import {
 
 import { Context as CommandContext } from '../context/command'
 import { Context as QueryContext } from '../context/query'
-import { CommandPort, QueryPort } from '../types'
+import { CommandPort, FieldErrorMap, QueryPort } from '../types'
 
 type Props = {
   children: (props: {
@@ -42,7 +42,7 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
     console.debug('[declaform][provider] blur', name)
     touchFields[name] = true
   }
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
+  const [fieldErrors, setFieldErrors] = useState<FieldErrorMap>({})
   const emitError: CommandPort['emitError'] = (name, error) => {
     console.debug('[declaform][provider] error', name, error)
     fieldErrors[name] = error

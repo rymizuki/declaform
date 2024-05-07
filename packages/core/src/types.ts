@@ -3,18 +3,22 @@ export interface ValidatorDefineRules {
   [N: string]: { [P: string]: unknown }
 }
 
+type DefaultValidatorDefineConfig = {
+  errorType: unknown
+}
+export interface ValidatorDefineConfig extends DefaultValidatorDefineConfig {}
+
+type ErrorType = ValidatorDefineConfig['errorType']
+type ErrorTypes = ErrorType[]
 type ExistsRule<T extends ValidatorDefineRules> =
   T extends Record<string, never> ? never : T
-export interface ValidatorErrorHandler {
-  (error: unknown): string[]
-}
-export interface ValidatorErrorHandlerDefineFunction {
-  (handler: ValidatorErrorHandler): void
+export interface ValidatorErrorHandler<T = unknown> {
+  (error: T): ErrorTypes
 }
 
 export type Data = Record<string, unknown>
 export type ValidationResult =
-  | { success: false; error: string[] }
+  | { success: false; error: ErrorTypes }
   | { success: true }
 export interface DefineValidationRuleInterface<
   N extends keyof ExistsRule<ValidatorDefineRules>
@@ -30,7 +34,7 @@ export interface ValidatorInterface {
   rules: {
     [N in keyof ExistsRule<ValidatorDefineRules>]?: DefineValidationRuleInterface<N>
   }
-  errorHandler: ValidatorErrorHandler
+  errorHandler: ValidatorErrorHandler<any> // eslint-disable-line @typescript-eslint/no-explicit-any
   validateField: <N extends keyof ValidatorDefineRules>(
     ruleName: N,
     value: unknown,

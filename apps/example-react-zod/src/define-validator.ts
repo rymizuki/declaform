@@ -10,9 +10,13 @@ declare module '@declaform/core' {
       ruleTargetPropName: string
     }
   }
+
+  interface ValidatorDefineConfig {
+    errorType: string
+  }
 }
 
-defineErrorHandler((error: ZodError) => {
+defineErrorHandler<ZodError>((error) => {
   return error.issues.map((issue) => issue.message)
 })
 

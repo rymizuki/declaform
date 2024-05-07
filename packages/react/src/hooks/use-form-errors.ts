@@ -5,7 +5,10 @@ export const useFormErrors = () => {
   const context = useContext(Context)
 
   const getErrorsByName = (name: string) => {
-    return context?.fieldErrors[name] ?? []
+    if (!context) return []
+    if (!context.fieldErrors[name]) return []
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return context.fieldErrors[name]
   }
 
   const getErrors = () => {

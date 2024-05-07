@@ -1,16 +1,17 @@
 import { ReactElement, useEffect, useMemo } from 'react'
 
+import { ValidatorDefineRules } from '@declaform/core'
 import { useFormCommand } from '../hooks/use-form-command'
+import { useFormErrors } from '../hooks/use-form-errors'
 import { useFormInputRuleRegister } from '../hooks/use-form-input-rule-register'
 import { useFormValidator } from '../hooks/use-form-validator'
 import {
+  ErrorTypes,
   ExistsRule,
   FormInputChangeEvent,
   FormInputFocusEvent,
   InputRuleDefine
 } from '../types'
-import { ValidatorDefineRules } from '@declaform/core'
-import { useFormErrors } from '../hooks/use-form-errors'
 
 type InputElementProp = (
   props: {
@@ -19,7 +20,7 @@ type InputElementProp = (
     onChange: (ev: FormInputChangeEvent) => void
     onBlur: (ev: FormInputFocusEvent) => void
   },
-  errors: string[]
+  errors: ErrorTypes
 ) => ReactElement
 
 type Props<N extends keyof ExistsRule<ValidatorDefineRules>> = {
@@ -65,6 +66,7 @@ export const FormInput = <N extends keyof ExistsRule<ValidatorDefineRules>>({
   }
 
   const errors = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return formError.getErrorsByName(name)
   }, [name, formError])
 
