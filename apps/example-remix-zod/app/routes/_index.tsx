@@ -1,6 +1,6 @@
 import { FormInput, FormProvider } from '@declaform/react'
 import { ActionFunction, LoaderFunction } from '@remix-run/node'
-import { Form, json, redirect, useLoaderData } from '@remix-run/react'
+import { Form, Link, json, redirect, useLoaderData } from '@remix-run/react'
 import { CSRFTokenSchema, loginSchema } from '../schemas'
 
 const EXAMPLE_CSRF_TOKEN = 'example_csrf_token'
@@ -92,6 +92,10 @@ export default function IndexView() {
           </Form>
         )}
       </FormProvider>
+
+      <div>
+        <Link to="/registration">Registration</Link>
+      </div>
     </div>
   )
 }

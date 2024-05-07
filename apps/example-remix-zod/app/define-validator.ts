@@ -7,6 +7,9 @@ declare module '@declaform/core' {
     rules: {
       user_id: {}
       password: {}
+      password_confirm: {
+        ruleReferencePropName: string
+      }
     }
     errorType: string
   }
@@ -25,5 +28,15 @@ defineValidationRule('user_id', {
 defineValidationRule('password', {
   validate(value) {
     return passwordSchema.safeParse(value)
+  }
+})
+
+defineValidationRule('password_confirm', {
+  validate(value, data, { ruleReferencePropName }) {
+    return passwordSchema
+      .refine((value) => value === data[ruleReferencePropName], {
+        message: 'Password mismatch'
+      })
+      .safeParse(value)
   }
 })
