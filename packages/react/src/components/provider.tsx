@@ -40,7 +40,7 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
   }
   const emitBlur: CommandPort['emitBlur'] = (name) => {
     console.debug('[declaform][provider] blur', name)
-    touchFields[name] = true
+    touchFields.current[name] = true
   }
   const [fieldErrors, setFieldErrors] = useState<FieldErrorMap>({})
   const emitError: CommandPort['emitError'] = (name, error) => {
