@@ -1,5 +1,11 @@
 # @declaform/core
 
+## 0.0.2
+
+### Patch Changes
+
+- fix these problems
+
 ## 0.0.1
 
 ### Patch Changes
