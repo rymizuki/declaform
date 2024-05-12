@@ -6,6 +6,7 @@ import {
   useRef,
   useState
 } from 'react'
+import { getLogger } from '@declaform/core'
 
 import { Context as CommandContext } from '../context/command'
 import { Context as QueryContext } from '../context/query'
@@ -26,7 +27,7 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
   const touchFields = useRef<Record<string, boolean>>({})
 
   const registerRule: CommandPort['registerRule'] = (name, rule) => {
-    console.debug(
+    getLogger().debug(
       '[declaform][provider] init',
       name,
       rule,
@@ -36,15 +37,15 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
   }
 
   const emitChange: CommandPort['emitChange'] = (name, value) => {
-    console.debug('[declaform][provider] change', name, value)
+    getLogger().debug('[declaform][provider] change', name, value)
   }
   const emitBlur: CommandPort['emitBlur'] = (name) => {
-    console.debug('[declaform][provider] blur', name)
+    getLogger().debug('[declaform][provider] blur', name)
     touchFields.current[name] = true
   }
   const [fieldErrors, setFieldErrors] = useState<FieldErrorMap>({})
   const emitError: CommandPort['emitError'] = (name, error) => {
-    console.debug('[declaform][provider] error', name, error)
+    getLogger().debug('[declaform][provider] error', name, error)
     fieldErrors[name] = error
     setFieldErrors({ ...fieldErrors })
   }
@@ -57,7 +58,7 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
   }, [fieldErrors])
 
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
-    console.log('[declaform][provider] submit', ev)
+    getLogger().debug('[declaform][provider] submit', ev)
     onSubmit && onSubmit(ev)
   }
 

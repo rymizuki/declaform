@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useMemo } from 'react'
 
+import { getLogger } from '@declaform/core'
 import { useFormCommand } from '../hooks/use-form-command'
 import { useFormErrors } from '../hooks/use-form-errors'
 import { useFormInputRuleRegister } from '../hooks/use-form-input-rule-register'
@@ -49,7 +50,7 @@ export const FormInput = <N extends keyof Rules>({
     return (ev: FormInputChangeEvent) => {
       const { name, value } = ev.target
       command?.emitChange(name, value)
-      console.debug('[declaform][form-input] change', name, value)
+      getLogger().debug('[declaform][form-input] change', name, value)
       validator.validateField(name, value)
       onChange && onChange(ev)
     }
@@ -57,7 +58,7 @@ export const FormInput = <N extends keyof Rules>({
   const createBlurHandler = (onBlur?: (ev: FormInputFocusEvent) => void) => {
     return (ev: FormInputFocusEvent) => {
       const { name } = ev.target
-      console.debug('[declaform][form-input] blur', name)
+      getLogger().debug('[declaform][form-input] blur', name)
       command?.emitBlur(name)
       validator.validate()
       onBlur && onBlur(ev)
