@@ -16,6 +16,7 @@ type Props = {
   children: (props: {
     ref: RefObject<HTMLFormElement>
     hasError: boolean
+    isTouched: () => boolean
     onSubmit: (ev: FormEvent<HTMLFormElement>) => void
   }) => ReactElement
   onSubmit?: (ev: FormEvent<HTMLFormElement>) => void
@@ -25,6 +26,9 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
   const ref = useFormRef()
   const ruleDefines = useRef<QueryPort['ruleDefines']>({})
   const touchFields = useRef<Record<string, boolean>>({})
+  const isTouched = () => {
+    return 0 < Object.keys(touchFields.current).length
+  }
 
   const registerRule: CommandPort['registerRule'] = (name, rule) => {
     getLogger().debug(
@@ -84,7 +88,7 @@ export const Provider = ({ children: renderProp, onSubmit }: Props) => {
           touchFields: touchFields.current
         }}
       >
-        {renderProp({ onSubmit: handleSubmit, ref, hasError })}
+        {renderProp({ onSubmit: handleSubmit, ref, hasError, isTouched })}
       </QueryContext.Provider>
     </CommandContext.Provider>
   )
