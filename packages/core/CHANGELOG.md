@@ -1,5 +1,11 @@
 # @declaform/core
 
+## 0.0.3
+
+### Patch Changes
+
+- chore(core): added logger
+
 ## 0.0.2
 
 ### Patch Changes
