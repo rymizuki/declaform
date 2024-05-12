@@ -1,5 +1,13 @@
 # @declaform/react
 
+## 0.0.4
+
+### Patch Changes
+
+- update for minimum fixes
+- Updated dependencies
+  - @declaform/core@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes

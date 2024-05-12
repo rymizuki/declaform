@@ -1,6 +1,6 @@
 {
   "name": "@declaform/react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "author": {
@@ -37,7 +37,7 @@
     "format": "prettier -w './**/*.{ts,tsx,js,json,css}' --check"
   },
   "devDependencies": {
-    "@declaform/core": "^0.0.3",
+    "@declaform/core": "^0.0.4",
     "@declaform/dev-config": "*",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
@@ -47,7 +47,7 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@declaform/core": "^0.0.3",
+    "@declaform/core": "^0.0.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }
