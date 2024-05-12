@@ -41,3 +41,10 @@ export interface ValidatorInterface {
     } & Rules[N]
   ) => ValidationResult
 }
+
+export interface LoggerInterface {
+  debug(format: string, ...args: unknown[]): void
+  info(format: string, ...args: unknown[]): void
+  warning(format: string, ...args: unknown[]): void
+  error(format: string, ...args: unknown[]): void
+}
