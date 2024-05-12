@@ -40,6 +40,9 @@
     "@declaform/dev-config": "*",
     "turbo": "^1.13.3"
   },
+  "peerDependencies": {
+    "@declaform/core": "^0.0.2"
+  },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.14.3"
   }
